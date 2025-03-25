@@ -32,8 +32,11 @@ return [
     |
     */
 
+    //lifetime se utiliza expiar la sesión al término de 120 minutos de inactividad
+    //Se puede configurar conmenos minutos o mas
     'lifetime' => (int) env('SESSION_LIFETIME', 120),
 
+    //Explire_on_close en true, la sesión expira cuando se cierre el navegador
     'expire_on_close' => env('SESSION_EXPIRE_ON_CLOSE', false),
 
     /*
