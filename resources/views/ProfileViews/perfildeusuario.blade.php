@@ -404,10 +404,12 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Versión</b> 1.0
+    <strong>Copyright &copy; 2025 <a href="#">AlmacenPlus 1.0</a>.</strong> todos los derechos reservados.
+
+      <div class="float-right d-none d-sm-block">
+        <b>Laravel versión</b> {{ \Illuminate\Foundation\Application::VERSION }}
     </div>
-    <strong>Copyright &copy; 2025 <a href="#">AlmacenPlus</a>.</strong> todos los derechos reservados.
+
   </footer>
 
   <!-- Control Sidebar -->

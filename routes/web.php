@@ -13,6 +13,10 @@ use App\Http\Controllers\ProfileController;
 //Route::get('/', [HomeController::class, 'index']);
 Route::get('/', HomeController::class);
 
+Route::get("/pruebas", function(){
+    return view("blank");
+});
+
 Route::prefix("/login")->group(function(){ //Rutas para el login
     //Rutas para el login
     /*Paso 1*/Route::get('/', [AuthController ::class, 'showLoginForm'])->name('login');

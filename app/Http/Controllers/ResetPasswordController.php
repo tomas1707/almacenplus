@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ConfirmarCorreoMailable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
@@ -15,11 +13,9 @@ use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller
 {
-    //
     public function showResetForm(){
 
         return view('ResetPasswordViews.olvidosucontrasennia');
-        //return view('login');
     }
 
     public function showResetFormWithToken($token){
