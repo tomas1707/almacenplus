@@ -30,15 +30,17 @@ class RegisterController extends Controller
 //        $exito=DB::insert('INSERT INTO usuarios (id_rol,nombre_completo,nombre_usuario,correo_electronico,contrasennia, activo) VALUES (?,?,?,?,?,?)', [6,$nombre,$correo,$usuario,$contrasennia,0]);
 
         try{
-            DB::connection('mysql')->
-            table('usuarios')->insert([
+            DB::connection('mysql')
+                ->table('usuarios')
+                ->insert([
                 'nombre_completo' => $nombre,
                 'nombre_usuario' => $usuario,
                 'correo_electronico' => $correo,
                 'contrasennia' => $contraseniaCifrada, // Insertar la contraseña cifrada
                 'activo' => 0, // o 0, según sea necesario
                 'id_rol' => 6
-            ]);
+                ]);
+
             $MensajeError="Registro exitoso";
 
             Mail::to($correo)

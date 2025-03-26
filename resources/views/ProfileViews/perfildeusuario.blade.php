@@ -99,13 +99,13 @@
             <li class="nav-item">
                 <a href="../gallery.html" class="nav-link">
                     <i class="nav-icon fas fa-chart-pie"></i>
-                    <p> Dashboard </p>
+                    <p> Gráficas </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../gallery.html" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p> KPI's </p>
+                    <p> Indicadores </p>
                 </a>
             </li>
 
@@ -113,13 +113,13 @@
             <li class="nav-item">
                 <a href="../gallery.html" class="nav-link active">
                     <i class="nav-icon far fa-user"></i>
-                    <p>Profile</p>
+                    <p>Perfil de Usuario</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../gallery.html" class="nav-link">
                     <i class="nav-icon fas fa-users-cog"></i>
-                    <p> Users </p>
+                    <p> Usuarios </p>
                 </a>
             </li>
 
@@ -127,37 +127,37 @@
             <li class="nav-item">
                 <a href="../gallery.html" class="nav-link">
                     <i class="nav-icon fas fa-truck"></i>
-                    <p> Suppliers </p>
+                    <p> Proveedores </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../gallery.html" class="nav-link">
                     <i class="nav-icon fas fa-shopping-bag"></i>
-                    <p> Products </p>
+                    <p> Productos </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../gallery.html" class="nav-link">
                     <i class="nav-icon fas fa-warehouse"></i>
-                    <p> Inventory </p>
+                    <p> Inventario </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../gallery.html" class="nav-link">
                     <i class="nav-icon fas fa-shopping-cart"></i>
-                    <p>  Shopping </p>
+                    <p>  Compras </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../gallery.html" class="nav-link">
                     <i class="nav-icon fas fa-id-card"></i>
-                    <p> Customers </p>
+                    <p> Clientes </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="../gallery.html" class="nav-link">
                     <i class="nav-icon fas fa-clipboard-list"></i>
-                    <p> Orders </p>
+                    <p> Pedidos </p>
                 </a>
             </li>
 
@@ -165,7 +165,7 @@
                 <li class="nav-item">
                     <a href="{{route('logout')}}" class="nav-link ">
                         <i class="fa fa-sign-out-alt"></i>
-                        <p> Log Out </p>
+                        <p> Cerrar Sesión </p>
                     </a>
                 </li>
             </div>

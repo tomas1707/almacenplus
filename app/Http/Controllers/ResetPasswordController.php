@@ -24,17 +24,28 @@ class ResetPasswordController extends Controller
 
     public function showResetFormWithToken($token){
 //        echo $token;
-
         try{
             $res=DB::connection('mysql')
-                ->table('usuarios')
+                ->table("usuarios")
+                ->select("token_expiracion")
                 ->where("token_recuperacion","=",$token)
                 ->first();
 
             if ($res) {
-                return view('ResetPasswordViews.cambiarcontrasennia', [
-                    'token' => $token
-                ]);
+                $fechaExpiracion = Carbon::parse($res->token_expiracion);
+                $fechaActual = Carbon::now();
+
+                if ($fechaExpiracion->greaterThan($fechaActual)) { //Verifica si el token aún es vigente
+                    return view('ResetPasswordViews.cambiarcontrasennia', [
+                        'token' => $token
+                    ]);
+                }
+                else{
+                    $MensajeError="El enlace ha expirado";
+                    return redirect(route('login'))
+                        ->with('sessionCambiarContrasennia', 'false')
+                        ->with('mensaje', $MensajeError);
+                }
             }
             else {
                 $MensajeError="Enlace incorecto o ha expirado";
@@ -42,7 +53,6 @@ class ResetPasswordController extends Controller
                     ->with('sessionCambiarContrasennia', 'false')
                     ->with('mensaje', $MensajeError);
             }
-
         }
         catch (\Swift_TransportException $e){
             $MensajeError="Hubo un error con las credenciales de correo";
@@ -52,7 +62,6 @@ class ResetPasswordController extends Controller
         }
         catch (\Exception $e){
             $MensajeError="Hubo un error en el servidor";
-//            dd($e->getMessage());
             return redirect(route('password.reset'))
                 ->with('sessionCambiarContrasennia', 'false')
                 ->with('mensaje', $MensajeError); //With envía en una session flash dos claves y sus valores
@@ -120,7 +129,7 @@ class ResetPasswordController extends Controller
                     ->with('mensaje', $MensajeError); //With envía en una session flash dos claves y sus valores
             }
         }
-        catch (\Swift_TransportException $e){
+        catch (\Swift_TransportException $e){ //Esta excepción se lanza si hay un problema con la conexión al servidor de correo.
             $MensajeError="Hubo un error con las credenciales de correo";
             return redirect(route('password.request'))
                 ->with('sessionRecuperarContrasennia', 'false')
