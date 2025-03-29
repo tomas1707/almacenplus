@@ -8,47 +8,48 @@ use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
-    public function showLoginForm(){
+    public function showLoginForm()
+    {
         return view('AuthViews.InicioSesion');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
-        $usuario=$request->usuario;
-        $pass=$request->contrasennia;
+        $usuario = $request->usuario;
+        $pass = $request->contrasennia;
 
-        $resUsuario=DB::connection('mysql')->
-            table('usuarios')
-                ->select('id','nombre_completo','contrasennia','activo')
-                ->where('nombre_usuario','=',$usuario)
-                ->first();
+        $resUsuario = DB::connection('mysql')->
+        table('usuarios')
+            ->select('id', 'nombre_completo', 'contrasennia', 'activo')
+            ->where('nombre_usuario', '=', $usuario)
+            ->first();
 
         //Si el tipo de dato del campo activo es entero, no es necesario convertir a entero en laravel
         //Laravel identifica el tipo de dato y así declara la variable.
-        if (intval($resUsuario->activo) == 1){
-            if ($resUsuario && Hash::check($pass, $resUsuario->contrasennia)) {
-//            echo "Coreo: $correo <br>";
-//            echo "Pass: $pass <br>";
-//            $passCifrado=Hash::make($pass);
-//            echo "Pass Hash: $passCifrado <br>";
+        if ($resUsuario && Hash::check($pass, $resUsuario->contrasennia)) {
+            if (intval($resUsuario->activo) == 1) {
+//              echo "Coreo: $correo <br>";
+//              echo "Pass: $pass <br>";
+//              $passCifrado=Hash::make($pass);
+//              echo "Pass Hash: $passCifrado <br>";
                 session()->put('id', $resUsuario->id);
                 session()->put('nombreCompleto', $resUsuario->nombre_completo);
                 return redirect('/profile');
-            }
-            else {
+            } else {
                 return redirect('/login')
                     ->with('loginCorecto', 'false')
-                    ->with('mensaje', 'Usuario o contraseña incorrectos');
+                    ->with('mensaje', 'No has confirmado tu correo');
             }
-        }
-        else{
+        } else {
             return redirect('/login')
                 ->with('loginCorecto', 'false')
-                ->with('mensaje', 'No has confirmado tu correo');
+                ->with('mensaje', 'Usuario o contraseña incorrectos');
         }
     }
 
-    public function logout(){
+    public function logout()
+    {
         session()->forget('id');
         session()->forget('nombreCompleto');
         return redirect('/login');
