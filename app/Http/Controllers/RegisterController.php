@@ -41,6 +41,8 @@ class RegisterController extends Controller
                 'id_rol' => 6
                 ]);
 
+
+
             $MensajeError="Registro exitoso";
 
             Mail::to($correo)
@@ -83,15 +85,15 @@ class RegisterController extends Controller
 
     }
 
-    public function edit(){
+    public function edit($id){
 
     }
 
-    public function update(){
+    public function update($id){
 
     }
 
-    public function destroy(){
+    public function destroy($id){
 
     }
 }

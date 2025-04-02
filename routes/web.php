@@ -27,9 +27,9 @@ Route::prefix("/login")->group(function(){ //Rutas para el login
 Route::prefix("/password")->group(function(){//Rutas para la recuperación de contraseña
     //Rutas para la recuperación de contraseña
     /*Paso 1*/Route::get('/reset', [ResetPasswordController::class, 'showResetForm'])->name('password.request');
-    /*Paso 2*/Route::post('/email', [ResetPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    /*Paso 2*/Route::put('/email', [ResetPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
     /*Paso 3*/Route::get('/reset/{token}', [ResetPasswordController::class, 'showResetFormWithToken'])->name('password.reset');
-    /*Paso 4*/Route::post('/reset', [ResetPasswordController::class, 'resetPassword'])->name('password.update');
+    /*Paso 4*/Route::put('/reset', [ResetPasswordController::class, 'resetPassword'])->name('password.update');
 });
 
 Route::prefix("/profile")->group(function(){//Rutas para el registro de nuevos usuarios

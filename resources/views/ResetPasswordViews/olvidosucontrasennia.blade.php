@@ -46,6 +46,7 @@
             <p class="login-box-msg">¿Olvidaste tu contraseña? <br>Aquí puedes recuperarla fácilmente.</p>
             <form id="registroForm" action="{{route("password.email")}}" method="post">
                 @csrf
+                @method('PUT')
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="correo" placeholder="Correo Electrónico">
                     <div class="input-group-append">
